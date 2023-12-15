@@ -24,10 +24,11 @@ xmax=st.sidebar.number_input('xmax', value=20, step=1, key='xmax')
 ymin=st.sidebar.number_input('ymin', value=-20, step=1, key='ymin')
 ymax=st.sidebar.number_input('ymax', value=20, step=1, key='ymax')
 
-    
+ 
 
 w_input=np.array([complex(w0_re,w0_im),complex(w1_re,w1_im),complex(w2_re,w2_im)])
 z_transformation=z_re+z_im*1j
+st.write(f'Traslazione del piano complesso: $z={z_transformation:.2f}$') 
 #z_transformation=np.exp(1j*np.pi)
 #2*np.exp(1j*np.pi/3)
 

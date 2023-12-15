@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from modules.drawing_utils import  draw_plot_translation, draw_plot_origin
 
-st.header('Rotazione e omotetia del piano complesso')
+st.write('Rotazione e omotetia del piano complesso con $z$ in forma algebrica')
 st.sidebar.write('Inserisci il complesso $z$ che definisce la trasformazione')
 
 z_re=st.sidebar.number_input(
@@ -54,6 +54,8 @@ O_im=st.sidebar.number_input('Parte immaginaria di $O$', value=0, step=1, key='O
 
     
 z_transformation=z_re+z_im*1j
+
+st.write(f'$z={z_transformation:.2f}$') 
 origin=O_re+O_im*1j
 w_input=np.array([complex(w0_re,w0_im),complex(w1_re,w1_im),complex(w2_re,w2_im)])
 
