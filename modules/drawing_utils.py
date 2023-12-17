@@ -1,5 +1,8 @@
+from calendar import c
+from matplotlib import transforms
 import matplotlib.pyplot as plt
 import numpy as np
+import streamlit as st
 
 
 cm = 1/2.54  # centimeters in inches
@@ -114,8 +117,8 @@ def draw_plot_translation(transform,in_points, xmin=-15,xmax=15,ymin=-5,ymax=15,
     return fig
     
     
-    
-def draw_plot_origin(transform,in_points,origin=0+0j, xmin=-15,xmax=15,ymin=-5,ymax=15,minrange=-10,maxrange=10,draw_polygon=False, dim_cm=20, tick_distance=1):
+ 
+def draw_plot_origin(transform,in_points,origin=0+0j, xmin=-15,xmax=15,ymin=-5,ymax=15,minrange=-10,maxrange=10,draw_polygon=False, dim_cm=20, tick_distance=1, circle=False):
     """Plot complex transformation scale and rotate around point
 
     Args:
@@ -144,7 +147,8 @@ def draw_plot_origin(transform,in_points,origin=0+0j, xmin=-15,xmax=15,ymin=-5,y
         transform=transform
  
     
-   
+
+        
 
     #If in_points is just a complex number and not a numpy array convert it to array
     if not(isinstance(in_points, np.ndarray)):
@@ -182,6 +186,11 @@ def draw_plot_origin(transform,in_points,origin=0+0j, xmin=-15,xmax=15,ymin=-5,y
     # ax.spines['left'].set_visible(False)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
+    
+    if circle:
+       radius=np.sqrt(transform.real**2+transform.imag**2)
+       draw_circle=plt.Circle((0, 0), radius, color='b', fill=False, ls='--', linewidth=0.5)
+       ax.add_patch(draw_circle)
     #Grid dashed
     ax.grid(True, ls='--', linewidth=0.5)
     
