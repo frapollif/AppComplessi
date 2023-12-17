@@ -14,7 +14,18 @@ st.title('Numeri complessi')
 st.markdown('''
 I numeri complessi come operazioni di trasformazione del piano complesso
 
-Testa traslazioni e rotazioni-omotetie del piano complesso
+Puoi utilizzare questa applicazione per testare traslazioni,rotazioni e omotetie del piano complesso.
+
+## Somma
+
+La somma di due complessi $z$ e $w$ può essere rappresentata come una traslazione del piano complesso. L'input $w$ viene traslato di $z$. In questo senso $z$ trasla il piano complesso.
+
+
+## Moltiplicazione
+
+La moltiplicazione tra due complessi $z$ e $w$ può essere rappresentata come una rotazione-omotetia del piano complesso. L'input $w$ viene ruotato e dilatato. In questo senso $z$ ruota e dilata (comprime) il piano complesso.
+Rotazione e omotetia sono legate all'angolo che $z$ forma con l'asse reale e al suo modulo.
+Questi valori sono evidenti se $z$ viene espresso in forma polare.
 
 ''')
 
