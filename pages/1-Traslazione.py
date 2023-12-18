@@ -74,8 +74,7 @@ with z_form_container.form("my_form"):
     
     z_transformation=z_re+z_im*1j
      
-    if 'z_transformation' not in st.session_state:
-        st.session_state.z_transformation=z_transformation
+    st.session_state.z_transformation=z_transformation
     
     
    # Every form must have a submit button.
