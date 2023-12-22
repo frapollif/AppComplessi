@@ -10,7 +10,7 @@ cm = 1/2.54  # centimeters in inches
 # z_im=st.sidebar.number_input('Parte immaginaria', value=2, step=1, key='z_imag')
 
 
-def update_plot():
+def update_plot(draw_polygon=True):
     global translation_plot
     translation_plot=draw_plot_translation(
         transform=st.session_state.z_transformation,
@@ -19,13 +19,14 @@ def update_plot():
         ymax=st.session_state.ymax,
         xmin=st.session_state.xmin,
         xmax=st.session_state.xmax,
-        draw_polygon=True,
+        draw_polygon=draw_polygon,
         minrange=-10,
         maxrange=10,
         )
 
     
 z_form_container=st.sidebar.container()
+
 
 triangle_expander=st.sidebar.expander('Definisci  3 complessi $w_0,w_1,w_2$ ')
 triangle_form_container=triangle_expander.container()
@@ -80,7 +81,7 @@ with z_form_container.form("my_form"):
    # Every form must have a submit button.
     z_submitted = st.form_submit_button("Submit")
     if z_submitted:
-        update_plot()
+        update_plot(draw_polygon=polygon_checkbox)
         # draw_plot_translation(
         #     transform=z_transformation,
         #     in_points=w_input,
@@ -103,18 +104,17 @@ st.write(f'Traslazione del piano complesso: $z={z_transformation:.2f}$')
 origin=0
 
 
-
 translation_plot=draw_plot_translation(
-    transform=z_transformation,
-    in_points=w_input,
-    ymin=ymin,
-    ymax=ymax,
-    xmin=xmin,
-    xmax=xmax,
-    draw_polygon=True,
-    minrange=-10,
-    maxrange=10,
-    )
+transform=z_transformation,
+in_points=w_input,
+ymin=ymin,
+ymax=ymax,
+xmin=xmin,
+xmax=xmax,
+draw_polygon=True,
+minrange=-10,
+maxrange=10,
+)
 
 
 

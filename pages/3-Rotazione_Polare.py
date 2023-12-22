@@ -23,8 +23,13 @@ def update_plot():
 st.write('Rotazione e omotetia del piano complesso: $z$ in forma polare $z\cdot w$')
 z_form_container=st.sidebar.container()
 
-triangle_expander=st.sidebar.expander('Definisci  3 complessi $w_0,w_1,w_2$ ')
-triangle_form_container=triangle_expander.container()
+
+poly_col1, poly_col2 = st.sidebar.columns([0.1,0.9])
+with poly_col1:
+    polygon_checkbox=st.checkbox('', value=True, key='triangle_checkboxes')
+with poly_col2:
+    triangle_expander=st.expander('Definisci  3 complessi $w_0,w_1,w_2$ ')
+    triangle_form_container=triangle_expander.container()
 
 fig_range_expander=st.sidebar.expander('Definisci i limiti del piano complesso')
 fig_range_form_container=fig_range_expander.container()
@@ -103,7 +108,9 @@ st.write(f'Forma algebrica: ${z_r*(np.cos(np.deg2rad(z_theta)))+z_r*(np.sin(np.d
 st.write(f'Forma trigonometrica: ${z_r:.2f}\cdot (\cos({z_theta}^\circ)+i\cdot \sin({z_theta}^\circ))$')
 
 
-
+if not(polygon_checkbox):
+    w_input=[]
+    
 plot=draw_plot_origin(
     transform=z_transformation,
     in_points=w_input,
@@ -112,7 +119,7 @@ plot=draw_plot_origin(
     ymax=ymax,
     xmin=xmin,
     xmax=xmax,
-    draw_polygon=True,
+    draw_polygon=polygon_checkbox,
     circle=True
 )
 st.pyplot(plot)
