@@ -81,7 +81,7 @@ with z_form_container.form("my_form"):
    # Every form must have a submit button.
     z_submitted = st.form_submit_button("Submit")
     if z_submitted:
-        update_plot(draw_polygon=polygon_checkbox)
+        update_plot(draw_polygon=True)
         # draw_plot_translation(
         #     transform=z_transformation,
         #     in_points=w_input,
